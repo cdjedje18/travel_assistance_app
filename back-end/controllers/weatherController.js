@@ -10,7 +10,6 @@ const weatherController = {
         if (city) {
             let url = `${config.weatherConfigs.apiUrl}?q=${city}&appid=${config.weatherConfigs.apiKey}&cnt=4&units=metric`
          
-
             const response = await requests.get(url)
 
             if (response?.data?.cod === '200') {

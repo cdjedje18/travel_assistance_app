@@ -10,3 +10,12 @@ export const getWeatherData = async (city) => {
         return error?.response
     }
 }
+
+export const getCountryIndicators = async (country) => {
+    const url = `${configs.apiUrl}/api/countryIndicators?country=${country}`
+    try {
+        return await axios.get(url)
+    } catch (error) {
+        return error?.response
+    }
+}

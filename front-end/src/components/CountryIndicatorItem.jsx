@@ -1,14 +1,14 @@
-export const CountryDetails = () => {
+export const CountryIndicatorItem = ({ title, value }) => {
     return (
         <div className="col-md-6">
             <small
                 className="text-muted"
                 style={{ fontSize: "0.9rem" }}
             >
-                Total Poulation
+                {title}
             </small>
             <br />
-            <span style={{ fontSize: "1.5rem" }}>23 000 000</span>
+            <span style={{ fontSize: "1.5rem" }}>{value}</span>
         </div>
     )
 }

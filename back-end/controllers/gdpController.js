@@ -13,7 +13,13 @@ const gdpController = {
 
             const response = await requests.get(url)
             // console.log(response?.data)
-            res.status(200).send(response?.data)
+
+            const countryIndicators = response?.data[1]?.map((value) => ({
+                id: value?.indicator?.id, title: value?.indicator?.value,
+                value: parseInt(value?.value), date: value?.date
+            }))
+
+            res.status(200).send({ countryIndicators: countryIndicators })
 
         } else {
             res.status(400).send({ message: "country name not provided" })
