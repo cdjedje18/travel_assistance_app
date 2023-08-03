@@ -1,14 +1,14 @@
-export const WeatherCard = () => {
+export const WeatherCard = ({ temp, date }) => {
 
-    
+
     return (
-        <div className="col-md-2">
+        <div className="col-md-3">
             <div className="card" style={{ borderRadius: "0.5rem" }}>
                 <div className="card-body">
-                    <span style={{ fontSize: "1.5rem" }}>23°C</span>
+                    <span style={{ fontSize: "1.5rem" }}>{temp}°C</span>
                     <br />
                     <small className="text-muted" style={{ fontSize: "0.9rem" }}>
-                        2023-02-05
+                        {date}
                     </small>
                 </div>
             </div>
