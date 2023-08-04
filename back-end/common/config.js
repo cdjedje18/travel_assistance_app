@@ -11,7 +11,8 @@ let config = {
     exchangeConfigs: {
         apiUrl: "http://api.exchangeratesapi.io",
         apiKey: "0341e5ca947495f61bd996ac662aa1b7"
-    }
+    },
+    jwtSecret: "secretkey"
 }
 
 module.exports = config

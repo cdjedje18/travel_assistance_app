@@ -22,8 +22,7 @@ export const Home = () => {
 
         let countryIndicatorsResponse = await getCountryIndicators(weatherDataResponse?.data?.country)
         let exchangeRatesResponse = await getExhangeRates()
-
-        console.log(exchangeRatesResponse)
+        
         setWeatherData(weatherDataResponse?.data)
         setCountryIndicators(countryIndicatorsResponse?.data)
         setExchangeRates(exchangeRatesResponse?.data)
@@ -32,7 +31,7 @@ export const Home = () => {
     }
 
 
-    console.log({ countryIndicators })
+    // console.log({ countryIndicators })
 
     return (
 
