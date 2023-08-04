@@ -9,7 +9,7 @@ let config = {
         gdpIndicator: "NY.GDP.PCAP.CD"
     },
     exchangeConfigs: {
-        apiKey: "http://api.exchangeratesapi.io",
+        apiUrl: "http://api.exchangeratesapi.io",
         apiKey: "0341e5ca947495f61bd996ac662aa1b7"
     }
 }

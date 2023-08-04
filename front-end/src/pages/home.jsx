@@ -1,6 +1,6 @@
 import { useRef, useState } from "react"
 import { WeatherCard, } from "../components/WeatherCard"
-import { getCountryIndicators, getWeatherData } from "../common/requests"
+import { getCountryIndicators, getExhangeRates, getWeatherData } from "../common/requests"
 import { ExchangeRate } from "../components/ExchangeRate"
 import { CountryIndicatorItem } from "../components/CountryIndicatorItem"
 
@@ -9,6 +9,7 @@ export const Home = () => {
     const [city, setCity] = useState("")
     const [weatherData, setWeatherData] = useState(null)
     const [countryIndicators, setCountryIndicators] = useState(null)
+    const [exchangeRates, setExchangeRates] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
 
 
@@ -18,12 +19,14 @@ export const Home = () => {
         setIsLoading(true)
 
         let weatherDataResponse = await getWeatherData(city)
-        console.log(weatherDataResponse)
-        let countryIndicatorsResponse = await getCountryIndicators(weatherDataResponse?.data?.country)
 
-        console.log(countryIndicatorsResponse)
+        let countryIndicatorsResponse = await getCountryIndicators(weatherDataResponse?.data?.country)
+        let exchangeRatesResponse = await getExhangeRates()
+
+        console.log(exchangeRatesResponse)
         setWeatherData(weatherDataResponse?.data)
         setCountryIndicators(countryIndicatorsResponse?.data)
+        setExchangeRates(exchangeRatesResponse?.data)
         setIsLoading(false)
 
     }
@@ -76,13 +79,17 @@ export const Home = () => {
                     <div className="col-md-12 col-lg-10 col-xl-8 mt-4">
                         <div className="row">
                             <div className="col-md-12">
-                                <div className="card" style={{ borderRadius: "0.5rem" }}>
-                                    <div className="card-body">
-                                        <div className="row">
-                                            <ExchangeRate />
+                                {(exchangeRates?.exchangeRates && exchangeRates?.exchangeRates?.length > 0) && (
+                                    <div className="card" style={{ borderRadius: "0.5rem" }}>
+                                        <div className="card-body">
+                                            <div className="row">
+                                                {exchangeRates?.exchangeRates?.map((item) => (
+                                                    <ExchangeRate title={item?.id} value={item?.value} key={item?.id} />
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                )}
                             </div>
 
                             <div className="col-md-12 mt-2">

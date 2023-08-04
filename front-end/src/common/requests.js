@@ -19,3 +19,12 @@ export const getCountryIndicators = async (country) => {
         return error?.response
     }
 }
+
+export const getExhangeRates = async () => {
+    const url = `${configs.apiUrl}/api/exchangeRates`
+    try {
+        return await axios.get(url)
+    } catch (error) {
+        return error?.response
+    }
+}
